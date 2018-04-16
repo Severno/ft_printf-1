@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 22:58:38 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/15 23:01:49 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/16 17:05:54 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <string.h>
 
 /*			PRINTF SETUP					*/
-# define P(...); printf(__VA_ARGS__);
-# define F(...); printf(__VA_ARGS__);
-//# define F(...);
+# define P(...); printf(__VA_ARGS__); printf("\n"); \
+printf(__VA_ARGS__); printf("\n\n\n");
+//# define F(...); printf("\n");
 
 
 /*			TABULATION FORMATTING			*/
 # define TITLE(...); printf("\n\n\n\n\t\t--"); printf(__VA_ARGS__); printf("--\n");
+# define HEAD(...); printf("\n\t-"); printf(__VA_ARGS__); printf("-\n");
 
 #endif

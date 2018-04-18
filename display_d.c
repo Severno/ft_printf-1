@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/19 00:25:42 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/19 01:13:39 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,12 @@ t_DATA			*display_d(t_DATA *DATA)
 	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
+	if (DATA->converter_flag[3] == '0' && !DATA->precision && !DATA->converter_flag[0])
+	{
+		DATA->precision = DATA->field_width;
+		if (num < 0)
+			DATA->precision--;
+	}
 	print_d(DATA, num, num_width, align_left);
 	return (DATA);
 }

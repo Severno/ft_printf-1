@@ -6,29 +6,30 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/18 21:01:40 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/19 00:25:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int		get_tens(int n)
+static int		get_tens(int num)
 {
 	int tens;
 
+	if (num < 0)
+		num *= -1;
 	tens = 1;
-	while ((n /= 10) > 0)
+	while ((num /= 10) > 0)
 		tens++;
 	return (tens);
 }
 
-static char		get_plus_minus_placeholder(t_DATA *DATA, int n)
+static char		get_negatvity_placeholder(t_DATA *DATA, int is_negative)
 {
 	char	*tmp;
 
 	tmp = DATA->converter_flag;
-
-	if (n < 0)
+	if (is_negative)
 		return ('-');
 	if (tmp[1] == '+')
 		return ('+');
@@ -37,58 +38,47 @@ static char		get_plus_minus_placeholder(t_DATA *DATA, int n)
 	return ('\0');
 }
 
-t_DATA			*print_d(t_DATA *DATA, int nb, int num_width, int minus_flag)
+t_DATA			*print_d(t_DATA *DATA, int num, int num_width, int align_left)
 {
 	int			not_blank;
-	char		plus_minus_placeholder;
+	char		negatvity_placeholder;
+	int			is_negative;
 
-	plus_minus_placeholder = get_plus_minus_placeholder(DATA, nb);
-
+	is_negative = 0;
+	if (num < 0)
+		is_negative = 1;
+	if (is_negative)
+		num *= -1;
+	negatvity_placeholder = get_negatvity_placeholder(DATA, is_negative);
+	not_blank = num_width;
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
-	else
-		not_blank = num_width;
-	if (plus_minus_placeholder)
+	if (negatvity_placeholder)
 		not_blank++;
-	if (!minus_flag)
-	{
-		while (DATA->field_width-- > not_blank)
-			write (1, " ", 1);
-	}
-	if (plus_minus_placeholder)
-		write (1, &plus_minus_placeholder, 1);
+	while (!align_left && DATA->field_width-- > not_blank)
+		write(1, " ", 1);
+	if (negatvity_placeholder)
+		write(1, &negatvity_placeholder, 1);
 	while (DATA->precision-- > num_width)
 		write(1, "0", 1);
-	ft_putnbr(nb);	
-	if (minus_flag)
-	{
-		while (DATA->field_width-- > not_blank)
-			write (1, " ", 1);
-	}
+	ft_putnbr(num);
+	while (align_left && DATA->field_width-- > not_blank)
+		write(1, " ", 1);
 	return (DATA);
 }
 
 t_DATA			*display_d(t_DATA *DATA)
 {
 	char	*str;
-	int		nb;
+	int		num;
 	int		num_width;
-	int		negative;
-	int		minus_flag;
+	int		align_left;
 
-	negative = 0;
-	minus_flag = 0;
-	nb = va_arg(DATA->args, int);
-	if (nb < 0)
-	{
-		nb *= -1;
-		negative = 1;
-	}
-	num_width = get_tens(nb);
-	printf("num_width %d\n", num_width);
+	align_left = 0;
+	num = va_arg(DATA->args, int);
+	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
-		minus_flag = 1;
-	write(1, "HERE\n", 5);
-	print_d(DATA, nb, num_width, minus_flag);
+		align_left = 1;
+	print_d(DATA, num, num_width, align_left);
 	return (DATA);
 }

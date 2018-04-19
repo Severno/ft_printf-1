@@ -6,13 +6,13 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/20 00:18:19 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/20 00:41:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-intmax_t		get_num(t_DATA *DATA)
+static intmax_t		get_num(t_DATA *DATA)
 {
 	intmax_t	num;
 	
@@ -61,7 +61,7 @@ static char		get_negatvity_placeholder(t_DATA *DATA, int is_negative)
 	return ('\0');
 }
 
-t_DATA			*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_left)
+static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_left)
 {
 	int			not_blank;
 	char		negatvity_placeholder;

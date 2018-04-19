@@ -6,13 +6,36 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/19 01:13:39 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/19 23:58:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int		get_tens(int num)
+intmax_t		get_num(t_DATA *DATA)
+{
+	intmax_t	num;
+	
+	if (ft_strcmp(DATA->argument_flag, "hh") == 0)
+		num = (signed char)(va_arg(DATA->args, int));
+	else if (ft_strcmp(DATA->argument_flag, "h") == 0)
+		num = (short)(va_arg(DATA->args, int));
+	else if (ft_strcmp(DATA->argument_flag, "ll") == 0)
+		num = (long long)(va_arg(DATA->args, long long int));
+	else if (ft_strcmp(DATA->argument_flag, "l") == 0)
+		num = (long)(va_arg(DATA->args, long int));
+	else if (ft_strcmp(DATA->argument_flag, "j") == 0)
+		num = (intmax_t)(va_arg(DATA->args, intmax_t));
+	else if (ft_strcmp(DATA->argument_flag, "z") == 0)
+		num = (size_t)(va_arg(DATA->args, size_t));
+	else
+		num = (int)(va_arg(DATA->args, int));
+	num = (intmax_t)num;
+	return (num);
+}
+
+
+static int		get_tens(intmax_t num)
 {
 	int tens;
 
@@ -38,7 +61,7 @@ static char		get_negatvity_placeholder(t_DATA *DATA, int is_negative)
 	return ('\0');
 }
 
-t_DATA			*print_d(t_DATA *DATA, int num, int num_width, int align_left)
+t_DATA			*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_left)
 {
 	int			not_blank;
 	char		negatvity_placeholder;
@@ -69,13 +92,13 @@ t_DATA			*print_d(t_DATA *DATA, int num, int num_width, int align_left)
 
 t_DATA			*display_d(t_DATA *DATA)
 {
-	char	*str;
-	int		num;
-	int		num_width;
-	int		align_left;
+	char		*str;
+	intmax_t	num;
+	int			num_width;
+	int			align_left;
 
 	align_left = 0;
-	num = va_arg(DATA->args, int);
+	num = get_num(DATA);
 	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;

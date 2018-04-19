@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/19 23:58:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/20 00:18:19 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_DATA			*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_left)
 		write(1, &negatvity_placeholder, 1);
 	while (DATA->precision-- > num_width)
 		write(1, "0", 1);
-	ft_putnbr(num);
+	ft_putnbrmax_fd(num, 1);
 	while (align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
 	return (DATA);

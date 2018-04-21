@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/20 00:41:17 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/21 16:39:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,37 +45,15 @@ static int		get_tens(uintmax_t num)
 	return (tens);
 }
 
-static char		get_negatvity_placeholder(t_DATA *DATA, int is_negative)
-{
-	char	*tmp;
-
-	tmp = DATA->converter_flag;
-	if (is_negative)
-		return ('-');
-	if (tmp[1] == '+')
-		return ('+');
-	if (tmp[2] == ' ')
-		return (' ');
-	return ('\0');
-}
-
 static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, int num_width, int align_left)
 {
 	int			not_blank;
-	char		negatvity_placeholder;
-	int			is_negative;
 
-	is_negative = 0;
-	negatvity_placeholder = get_negatvity_placeholder(DATA, is_negative);
 	not_blank = num_width;
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
-	if (negatvity_placeholder)
-		not_blank++;
 	while (!align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
-	if (negatvity_placeholder)
-		write(1, &negatvity_placeholder, 1);
 	while (DATA->precision-- > num_width)
 		write(1, "0", 1);
 	ft_putnbrumax_fd(num, 1);

@@ -6,24 +6,27 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 00:10:59 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 01:41:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void			print_leading_zero(char hash, char x)
+static void			print_leading_zero(uintmax_t num, char hash, char x)
 {
-	if (hash == '#' && x == 'x')
-		write (1, "0x", 2);
-	if (hash == '#' && x == 'X')
-		write (1, "0X", 2);
+	if (num)
+	{
+		if (hash == '#' && x == 'x')
+			write (1, "0x", 2);
+		if (hash == '#' && x == 'X')
+			write (1, "0X", 2);
+	}
 }
 
 static uintmax_t	get_num(t_DATA *DATA)
 {
 	uintmax_t	num;
-	
+
 	if (ft_strcmp(DATA->argument_flag, "hh") == 0)
 		num = (unsigned char)(va_arg(DATA->args, unsigned int));
 	else if (ft_strcmp(DATA->argument_flag, "h") == 0)
@@ -60,13 +63,13 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, int num_width, int align_l
 	not_blank = num_width;
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
-	if (DATA->converter_flag[4] == '#')
+	if (DATA->converter_flag[4] == '#' && num)
 		not_blank += 2;
 	while (!align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
 	while (DATA->precision-- > num_width)
 		write(1, "0", 1);
-	print_leading_zero(DATA->converter_flag[4], DATA->specifier_flag);
+	print_leading_zero(num, DATA->converter_flag[4], DATA->specifier_flag);
 	if (DATA->specifier_flag == 'x')
 		ft_putstr(ft_itoa_base(num, 16, 'a'));
 	else if (DATA->specifier_flag == 'X')

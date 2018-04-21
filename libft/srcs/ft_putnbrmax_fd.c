@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbrmax_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/27 15:36:53 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/20 03:05:53 by dhojt            ###   ########.fr       */
+/*   Created: 2018/04/20 00:14:08 by dhojt             #+#    #+#             */
+/*   Updated: 2018/04/20 00:23:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_putnbrmax_fd(intmax_t n, int fd)
 {
-	int		len;
-
-	len = ft_strlen(s);
-	write(fd, s, len);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n *= -1;
+		}
+		if (n > 9)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + '0', fd);
+	}
 }

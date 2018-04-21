@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 15:39:39 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/05 02:53:33 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/21 22:54:11 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ char			*ft_strtrimselect(char const *s, char c);
 char			*ft_removeselect(const char *s, char c);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_strsplitfirst(char *str, char c);
+void			ft_putnbrmax_fd(intmax_t n, int fd);
+void			ft_putnbrumax_fd(uintmax_t n, int fd);
+char			*ft_itoa_base(uintmax_t num, uintmax_t base, char c);
 
 typedef struct	s_list
 {

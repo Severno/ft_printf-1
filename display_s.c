@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/19 04:01:41 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 15:35:18 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@ t_DATA			*display_s(t_DATA *DATA)
 	int			i;
 
 	i = 0;
-	s = va_arg(DATA->args, char *);
 	if (DATA->precision)
-	{
-		while (DATA->precision-- > 0 && s != '\0')
-		{
-			write(1, s, 1);
-			s++;
-		}
-	}
+		s = ft_strndup(va_arg(DATA->args, char *), DATA->precision);
 	else
-		ft_putstr(s);
+		s = ft_strdup(va_arg(DATA->args, char *));
+	ft_putstr(s);
+	DATA->len = ft_strlen(s);
+	free (s);
 	return (DATA);
 }

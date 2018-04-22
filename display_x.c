@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 02:47:34 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 15:41:28 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 		not_blank = DATA->precision;
 	if (DATA->converter_flag[4] == '#' && num)
 		not_blank += 2;
+	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
 	while (!align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
 	while (DATA->precision-- > num_width)

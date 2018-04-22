@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 01:41:52 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 02:47:34 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,12 @@ static uintmax_t	get_num(t_DATA *DATA)
 	return (num);
 }
 
-
-static int		get_tens(uintmax_t num)
-{
-	int tens;
-
-	tens = 1;
-	while ((num /= 10) > 0)
-		tens++;
-	return (tens);
-}
-
-static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, int num_width, int align_left)
+static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 {
 	int			not_blank;
+	int			num_width;
 
+	num_width = ft_strlen(str);
 	not_blank = num_width;
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
@@ -71,9 +62,10 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, int num_width, int align_l
 		write(1, "0", 1);
 	print_leading_zero(num, DATA->converter_flag[4], DATA->specifier_flag);
 	if (DATA->specifier_flag == 'x')
-		ft_putstr(ft_itoa_base(num, 16, 'a'));
+		ft_putstr(str);
 	else if (DATA->specifier_flag == 'X')
 		ft_putstr(ft_itoa_base(num, 16, 'A'));
+	free(str);
 	while (align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
 	return (DATA);
@@ -83,16 +75,16 @@ t_DATA			*display_x(t_DATA *DATA)
 {
 	char		*str;
 	uintmax_t	num;
-	int			num_width;
 	int			align_left;
 
 	align_left = 0;
 	num = get_num(DATA);
-	num_width = get_tens(num);
+	if (!(str = ft_itoa_base(num, 16, 'a')))
+		return (NULL);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
 	if (DATA->converter_flag[3] == '0' && !DATA->precision && !DATA->converter_flag[0])
 		DATA->precision = DATA->field_width;
-	print_u(DATA, num, num_width, align_left);
+	print_u(DATA, num, str, align_left);
 	return (DATA);
 }

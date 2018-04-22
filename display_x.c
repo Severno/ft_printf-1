@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 15:41:28 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 18:11:10 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 	int			num_width;
 
 	num_width = ft_strlen(str);
+	if (DATA->converter_flag[4] == '#' && num)
+		num_width += 2;
 	not_blank = num_width;
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
-	if (DATA->converter_flag[4] == '#' && num)
-		not_blank += 2;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
 	while (!align_left && DATA->field_width-- > not_blank)
 		write(1, " ", 1);
+	print_leading_zero(num, DATA->converter_flag[4], DATA->specifier_flag);
 	while (DATA->precision-- > num_width)
 		write(1, "0", 1);
-	print_leading_zero(num, DATA->converter_flag[4], DATA->specifier_flag);
 	if (DATA->specifier_flag == 'x')
 		ft_putstr(str);
 	else if (DATA->specifier_flag == 'X')

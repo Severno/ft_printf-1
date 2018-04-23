@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbrmax_fd.c                                  :+:      :+:    :+:   */
+/*   display_percent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/20 00:14:08 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/23 14:03:04 by dhojt            ###   ########.fr       */
+/*   Created: 2018/04/23 16:01:33 by dhojt             #+#    #+#             */
+/*   Updated: 2018/04/23 16:53:30 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
-void	ft_putnbrmax_fd(intmax_t n, int fd)
+t_DATA *display_percent(t_DATA *DATA)
 {
-	if (n == -9223372036854775807 - 1)
-		write (1, "-9223372036854775808", 20);
-	else
-	{
-		if (n < 0)
-		{
-			ft_putchar_fd('-', fd);
-			n *= -1;
-		}
-		if (n > 9)
-			ft_putnbrmax_fd(n / 10, fd);
-		ft_putchar_fd((n % 10) + '0', fd);
-	}
+      if (DATA->converter_flag[0] != '-')
+	  {
+		  while (DATA->field_width-- > 1)
+		  {
+			  write(1, " ", 1);
+			  DATA->len++;
+		  }
+	  }
+	  write(1, "%", 1);
+      if (DATA->converter_flag[0] == '-')
+	  {
+		  while (DATA->field_width-- > 1)
+		  {
+			  write(1, " ", 1);
+			  DATA->len++;
+		  }
+	  }
+      DATA->len++;
+  return(DATA);
 }

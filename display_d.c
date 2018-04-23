@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/23 14:57:56 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/23 23:42:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,11 @@ static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_le
 	if (negatvity_placeholder)
 		not_blank++;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
-	while (!align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (!align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	if (negatvity_placeholder)
 		write(1, &negatvity_placeholder, 1);
-	while (DATA->precision-- > num_width)
-		write(1, "0", 1);	
+	display_gap(DATA, '0', DATA->precision - num_width, 0);
 	if (num != (-9223372036854775807 - 1))
 		ft_putnbrmax_fd(num, 1);
 	else
@@ -92,8 +91,8 @@ static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_le
 		write(1, "9223372036854775808", 19);
 		DATA->len += 18;
 	}
-	while (align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	return (DATA);
 }
 

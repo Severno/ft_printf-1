@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 15:44:40 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 00:02:35 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@ static uintmax_t	get_num(t_DATA *DATA)
 	return (num);
 }
 
-
-static int		get_tens(uintmax_t num)
-{
-	int tens;
-
-	tens = 1;
-	while ((num /= 10) > 0)
-		tens++;
-	return (tens);
-}
-
 static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 {
 	int			not_blank;
@@ -42,14 +31,13 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
-	while (!align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (!align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	write(1, "0x", 2);
-	while (DATA->precision-- > num_width)
-		write(1, "0", 1);
+	display_gap(DATA, '0', DATA->precision - num_width, 0);
 	ft_putstr(str);
-	while (align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	return (DATA);
 }
 

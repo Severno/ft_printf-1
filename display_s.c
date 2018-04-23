@@ -6,20 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 19:38:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/23 23:44:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-static void		print_space(t_DATA *DATA, int len)
-{
-	while ((DATA->field_width--) > len)
-	{
-		write (1, " ", 1);
-		DATA->len += 1;
-	}
-}
 
 t_DATA			*display_s(t_DATA *DATA)
 {
@@ -41,10 +32,10 @@ t_DATA			*display_s(t_DATA *DATA)
 	len = ft_strlen(s);
 	DATA->len += len;
 	if (DATA->converter_flag[0] != '-')
-		print_space(DATA, len);
+		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	ft_putstr(s);
 	if (DATA->converter_flag[0] == '-')
-		print_space(DATA, len);
+		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	free (s);
 	return (DATA);
 }

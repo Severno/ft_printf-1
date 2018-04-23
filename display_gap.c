@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_c.c                                        :+:      :+:    :+:   */
+/*   display_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/23 23:51:47 by dhojt            ###   ########.fr       */
+/*   Created: 2018/04/23 19:49:36 by dhojt             #+#    #+#             */
+/*   Updated: 2018/04/23 23:43:46 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static void		print_space(t_DATA *DATA, int len)
+void	display_gap(t_DATA *DATA, char c, int len, int update_len)
 {
-	while (--len > -1 && len)
+	char	*str;
+
+	if (len > 0)
 	{
-		write(1, " ", 1);
-		DATA->len++;
+		if (update_len)
+			DATA->len += len;
+		if ((str = ft_strnew(len)))
+		{
+			ft_memset(str, c, len);
+			write(1, str, len);
+			free(str);
+		}
 	}
-}
-
-t_DATA			*display_c(t_DATA *DATA)
-{
-	char		c;
-
-	c = va_arg(DATA->args, int);
-	if (DATA->converter_flag[0] != '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);	
-	write(1, &c, 1);
-	if (DATA->converter_flag[0] == '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);
-	DATA->len++;
-	return (DATA);
 }

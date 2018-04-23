@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/22 18:11:10 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 00:00:43 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,17 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 	if (num_width <= DATA->precision)
 		not_blank = DATA->precision;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
-	while (!align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (!align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	print_leading_zero(num, DATA->converter_flag[4], DATA->specifier_flag);
-	while (DATA->precision-- > num_width)
-		write(1, "0", 1);
+	display_gap(DATA, '0', DATA->precision - num_width, 0);
 	if (DATA->specifier_flag == 'x')
 		ft_putstr(str);
 	else if (DATA->specifier_flag == 'X')
 		ft_putstr(ft_itoa_base(num, 16, 'A'));
 	free(str);
-	while (align_left && DATA->field_width-- > not_blank)
-		write(1, " ", 1);
+	if (align_left)
+		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	return (DATA);
 }
 

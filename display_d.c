@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/23 23:42:44 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 17:43:21 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static intmax_t		get_num(t_DATA *DATA)
 {
 	intmax_t	num;
-	
+
 	if (ft_strcmp(DATA->argument_flag, "hh") == 0)
 		num = (signed char)(va_arg(DATA->args, int));
 	else if (ft_strcmp(DATA->argument_flag, "h") == 0)
@@ -74,10 +74,12 @@ static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_le
 		num *= -1;
 	negatvity_placeholder = get_negatvity_placeholder(DATA, is_negative);
 	not_blank = num_width;
-	if (num_width <= DATA->precision)
+	if (num_width <= DATA->precision && DATA->precision >= 0)
 		not_blank = DATA->precision;
 	if (negatvity_placeholder)
 		not_blank++;
+	//if (negatvity_placeholder && DATA->converter_flag[3] == '0')
+	//	DATA->len--;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
 	if (!align_left)
 		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
@@ -105,13 +107,18 @@ t_DATA			*display_d(t_DATA *DATA)
 
 	align_left = 0;
 	num = get_num(DATA);
+	if (num == 0 && DATA->precision == 0)
+	{
+		display_gap(DATA, ' ', DATA->field_width, 1);
+		return (DATA);
+	}
 	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
-	if (DATA->converter_flag[3] == '0' && !DATA->precision && !DATA->converter_flag[0])
+	if (DATA->converter_flag[3] == '0' && DATA->precision == -1  && !DATA->converter_flag[0])
 	{
 		DATA->precision = DATA->field_width;
-		if (num < 0)
+		if (num < 0 || DATA->converter_flag[2] || DATA->converter_flag[1] || DATA->converter_flag[0]) 
 			DATA->precision--;
 	}
 	print_d(DATA, num, num_width, align_left);

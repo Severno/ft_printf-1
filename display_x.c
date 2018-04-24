@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 00:00:43 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 15:54:49 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
 	if (DATA->converter_flag[4] == '#' && num)
 		num_width += 2;
 	not_blank = num_width;
-	if (num_width <= DATA->precision)
+	if (num_width <= DATA->precision && DATA->precision > 0)
 		not_blank = DATA->precision;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
 	if (!align_left)
@@ -79,11 +79,16 @@ t_DATA			*display_x(t_DATA *DATA)
 
 	align_left = 0;
 	num = get_num(DATA);
+	if (num == 0 && DATA->precision == 0)
+	{
+		display_gap(DATA, ' ', DATA->field_width, 1);
+		return (DATA);
+	}
 	if (!(str = ft_itoa_base(num, 16, 'a')))
 		return (NULL);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
-	if (DATA->converter_flag[3] == '0' && !DATA->precision && !DATA->converter_flag[0])
+	if (DATA->converter_flag[3] == '0' && DATA->precision == -1 && !DATA->converter_flag[0])
 		DATA->precision = DATA->field_width;
 	print_u(DATA, num, str, align_left);
 	return (DATA);

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 18:25:10 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 18:34:03 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_DATA			*display_u(t_DATA *DATA)
 	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
-	if (DATA->converter_flag[3] == '0' && !DATA->precision && !DATA->converter_flag[0])
+	if (DATA->converter_flag[3] == '0' && DATA->precision == -1 && !DATA->converter_flag[0])
 		DATA->precision = DATA->field_width;
 	print_u(DATA, num, num_width, align_left);
 	return (DATA);

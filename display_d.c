@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 17:43:21 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 18:27:37 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static intmax_t		get_num(t_DATA *DATA)
 {
 	intmax_t	num;
 
-	if (ft_strcmp(DATA->argument_flag, "hh") == 0)
+	if (DATA->specifier_flag == 'D')
+		num = (long)(va_arg(DATA->args, long int));
+	else if (ft_strcmp(DATA->argument_flag, "hh") == 0)
 		num = (signed char)(va_arg(DATA->args, int));
 	else if (ft_strcmp(DATA->argument_flag, "h") == 0)
 		num = (short)(va_arg(DATA->args, int));

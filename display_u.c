@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/23 23:43:16 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/24 18:25:10 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static uintmax_t	get_num(t_DATA *DATA)
 {
 	uintmax_t	num;
-
-	if (ft_strcmp(DATA->argument_flag, "hh") == 0)
+	
+	if (DATA->specifier_flag == 'U')
+		num = (unsigned long)(va_arg(DATA->args, unsigned long int));
+	else if (ft_strcmp(DATA->argument_flag, "hh") == 0)
 		num = (unsigned char)(va_arg(DATA->args, unsigned int));
 	else if (ft_strcmp(DATA->argument_flag, "h") == 0)
 		num = (unsigned short)(va_arg(DATA->args, unsigned int));

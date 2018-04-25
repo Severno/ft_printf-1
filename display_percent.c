@@ -6,11 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 16:01:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 00:05:37 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 16:01:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 t_DATA *display_percent(t_DATA *DATA)
 {

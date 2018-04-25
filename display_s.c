@@ -6,11 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 16:15:16 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 16:01:54 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 t_DATA			*display_s(t_DATA *DATA)
 {

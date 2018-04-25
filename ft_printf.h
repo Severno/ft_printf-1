@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 14:10:56 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 14:48:02 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 16:03:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_DATA			*display_x(t_DATA *DATA);
 t_DATA			*display_o(t_DATA *DATA);
 t_DATA			*display_p(t_DATA *DATA);
 t_DATA			*display_percent(t_DATA *DATA);
-t_DATA			display_gap(t_DATA *DATA, char c, int len, int update_len);
+t_DATA			*display_gap(t_DATA *DATA, char c, int len, int update_len);
 
 int				that_error(int value);
+#endif

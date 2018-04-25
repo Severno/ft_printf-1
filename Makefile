@@ -6,16 +6,15 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 14:54:56 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/25 15:07:46 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/25 15:58:35 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libftprintf.a
 
 SOURCES =	parser.c \
-			error.c \
-			first_flag.c \
 			initialize.c \
+			treatment.c \
 			reinitialize.c \
 			parse_converter_flags.c \
 			ft_printf.c \
@@ -36,7 +35,7 @@ DISPLAY =	display_d.c \
 			display_percent.c \
 			display_gap.c
 
-INCLUDES =	printf.h
+INCLUDES =	ft_printf.h
 
 LIBFT_A =	libft/libft.a
 LIBFT_H = 	-I libft/includes
@@ -45,7 +44,7 @@ CC = gcc -c
 
 all:
 	make -C libft/
-	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H) printf.h
+	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H) $(INCLUDES)
 	ar rc $(NAME) *.o libft/obj/*.o
 	ranlib $(NAME)
 

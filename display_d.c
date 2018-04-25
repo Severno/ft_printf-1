@@ -6,11 +6,11 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 18:27:37 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 16:01:23 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static intmax_t		get_num(t_DATA *DATA)
 {

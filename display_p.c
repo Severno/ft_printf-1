@@ -6,11 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/24 16:24:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 16:01:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static uintmax_t	get_num(t_DATA *DATA)
 {

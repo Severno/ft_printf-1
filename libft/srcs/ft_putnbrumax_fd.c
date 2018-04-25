@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:14:08 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/20 00:23:21 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 22:36:10 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	ft_putnbrumax_fd(uintmax_t n, int fd)
 {
 	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
+		ft_putnbrumax_fd(n / 10, fd);
 	ft_putchar_fd((n % 10) + '0', fd);
 }

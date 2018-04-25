@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/04/25 14:54:56 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/25 15:58:35 by dhojt            ###   ########.fr        #
+#    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
+#    Updated: 2018/04/25 20:59:37 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libftprintf.a
 
 SOURCES =	parser.c \
-			initialize.c \
 			treatment.c \
+			initialize.c \
 			reinitialize.c \
 			parse_converter_flags.c \
 			ft_printf.c \
@@ -35,7 +35,7 @@ DISPLAY =	display_d.c \
 			display_percent.c \
 			display_gap.c
 
-INCLUDES =	ft_printf.h
+INCLUDES =	printf.h
 
 LIBFT_A =	libft/libft.a
 LIBFT_H = 	-I libft/includes
@@ -44,7 +44,7 @@ CC = gcc -c
 
 all:
 	make -C libft/
-	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H) $(INCLUDES)
+	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H) ft_printf.h
 	ar rc $(NAME) *.o libft/obj/*.o
 	ranlib $(NAME)
 
@@ -59,5 +59,3 @@ fclean: clean
 	rm -rf a.out
 
 re: fclean all
-
-#ADD PHONY

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 19:25:15 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/21 22:59:06 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/22 17:55:11 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ static char	*ft_generate_string(uintmax_t num, uintmax_t base, char c)
 	char		*str;
 
 	if (num == 0)
-		return ("0");
+	{
+		if (!(str = ft_strnew(1)))
+			return (NULL);
+		*str = '0';
+		return (str);
+	}
 	sum = num;
 	i = 0;
 	len = ft_get_len(num, base);

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:46:06 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 20:59:28 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 23:37:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int					parser(t_DATA *DATA);
 t_DATA				*initialize(t_DATA *DATA);
 t_DATA				*reinitialize(t_DATA *DATA);
 
-t_DATA				*double_percent(t_DATA *DATA);
 t_DATA				*parse_converter(t_DATA *DATA);
 t_DATA				*parse_field_width(t_DATA *DATA);
 t_DATA				*parse_precision(t_DATA *DATA);
@@ -72,7 +71,7 @@ t_DATA				*display_u(t_DATA *DATA);
 t_DATA				*display_x(t_DATA *DATA);
 t_DATA				*display_o(t_DATA *DATA);
 t_DATA				*display_p(t_DATA *DATA);
-t_DATA				*display_percent(t_DATA *DATA);
+t_DATA				*display_other(t_DATA *DATA);
 void				display_gap(t_DATA *DATA, char c, int len, int update_len);
 
 #endif

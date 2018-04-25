@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:46:44 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/25 22:36:42 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ t_DATA			*switch_display(t_DATA *DATA)
 	flag = &DATA->specifier_flag;
 	if(*flag == 'd' || *flag == 'i' || *flag == 'D')
 		display_d(DATA);
-	if(*flag == 'c')
+	else if(*flag == 'c')
 		display_c(DATA);
-	if(*flag == 's')
+	else if(*flag == 's')
 		display_s(DATA);
-	if(*flag == 'u' || *flag == 'U')
+	else if(*flag == 'u' || *flag == 'U')
 		display_u(DATA);
-	if(*flag == 'x' || *flag == 'X')
+	else if(*flag == 'x' || *flag == 'X')
 		display_x(DATA);
-	if(*flag == 'o' || *flag == 'O')
+	else if(*flag == 'o' || *flag == 'O')
 		display_o(DATA);
-	if(*flag == 'p')
+	else if(*flag == 'p')
 		display_p(DATA);
-	if(*flag == '%')
-		display_percent(DATA);
+	else
+		display_other(DATA);
 	return(DATA);
 }

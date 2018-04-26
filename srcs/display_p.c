@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:08:15 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/26 15:36:38 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static uintmax_t	get_num(t_DATA *DATA)
 	return (num);
 }
 
-static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, char *str, int align_left)
+static t_DATA		*print_u(t_DATA *DATA, char *str, int align_left)
 {
 	int			not_blank;
 	int			num_width;
@@ -42,7 +42,6 @@ t_DATA			*display_p(t_DATA *DATA)
 {
 	char		*str;
 	uintmax_t	num;
-	int			num_width;
 	int			align_left;
 
 	align_left = 0;
@@ -51,6 +50,6 @@ t_DATA			*display_p(t_DATA *DATA)
 		return (NULL);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;
-	print_u(DATA, num, str, align_left);
+	print_u(DATA, str, align_left);
 	return (DATA);
 }

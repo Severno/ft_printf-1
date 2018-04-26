@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:42:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/26 14:56:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static t_DATA		*print_u(t_DATA *DATA, uintmax_t  num, int num_width, int align_l
 
 t_DATA			*display_u(t_DATA *DATA)
 {
-	char		*str;
 	uintmax_t	num;
 	int			num_width;
 	int			align_left;

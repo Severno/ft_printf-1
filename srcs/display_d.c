@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:07:35 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/26 14:55:20 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_le
 
 t_DATA			*display_d(t_DATA *DATA)
 {
-	char		*str;
 	intmax_t	num;
 	int			num_width;
 	int			align_left;

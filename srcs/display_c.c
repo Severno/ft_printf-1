@@ -6,20 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:07:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/26 14:56:00 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void		print_space(t_DATA *DATA, int len)
-{
-	while (--len > -1 && len)
-	{
-		write(1, " ", 1);
-		DATA->len++;
-	}
-}
 
 t_DATA			*display_c(t_DATA *DATA)
 {

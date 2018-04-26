@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:42:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/26 14:56:27 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_DATA			*display_s(t_DATA *DATA)
 	char		*s;
 	int			i;
 	int			len;
-	char		*tmp;
 
 	i = 0;
 	s = va_arg(DATA->args, char *);

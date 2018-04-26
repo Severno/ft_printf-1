@@ -6,18 +6,26 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/25 23:37:30 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/26 03:32:47 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libftprintf.a
+LIBFT_A =	srcs/libft/libft.a
 
-SOURCES =	parser.c \
+PRINTF_H =	-I includes/
+LIBFT_H = 	-I srcs/libft/includes
+
+PAR_DIR	=	srcs/parse/
+DIS_DIR =	srcs/display/
+OBJ_DIR =	objs/
+
+PARSE =		ft_printf.c \
 			treatment.c \
 			initialize.c \
 			reinitialize.c \
+			parser.c \
 			parse_converter_flags.c \
-			ft_printf.c \
 			parse_field_width.c \
 			parse_precision.c \
 			parse_arguments.c \
@@ -34,16 +42,12 @@ DISPLAY =	display_d.c \
 			display_other.c \
 			display_gap.c
 
-INCLUDES =	printf.h
 
-LIBFT_A =	libft/libft.a
-LIBFT_H = 	-I libft/includes
-
-CC = gcc -c
+COMP = gcc -c
 
 all:
 	make -C libft/
-	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H) ft_printf.h
+	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H)
 	ar rc $(NAME) *.o libft/obj/*.o
 	ranlib $(NAME)
 
@@ -58,3 +62,5 @@ fclean: clean
 	rm -rf a.out
 
 re: fclean all
+
+#DO .PHONY

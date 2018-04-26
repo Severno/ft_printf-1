@@ -6,21 +6,23 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/26 03:32:47 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/26 16:23:48 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		libftprintf.a
-LIBFT_A =	srcs/libft/libft.a
+LIBFT_A =	libft.a
+
+COMP =		gcc -Wall -Werror -Wextra $(PRINTF_H) $(LIBFT_H) -c -o
 
 PRINTF_H =	-I includes/
 LIBFT_H = 	-I srcs/libft/includes
 
-PAR_DIR	=	srcs/parse/
-DIS_DIR =	srcs/display/
-OBJ_DIR =	objs/
+OBJ_DIR =	obj/
+SRC_DIR =	srcs/
+LIB_DIR =	srcs/libft/
 
-PARSE =		ft_printf.c \
+CFILE =		ft_printf.c \
 			treatment.c \
 			initialize.c \
 			reinitialize.c \
@@ -30,9 +32,8 @@ PARSE =		ft_printf.c \
 			parse_precision.c \
 			parse_arguments.c \
 			parse_specifier.c \
-			switch_display.c
-
-DISPLAY =	display_d.c \
+			switch_display.c \
+			display_d.c \
 			display_c.c \
 			display_s.c \
 			display_u.c \
@@ -42,25 +43,46 @@ DISPLAY =	display_d.c \
 			display_other.c \
 			display_gap.c
 
+CFIND =		$(CFILE:%=$(SRC_DIR)%)
 
-COMP = gcc -c
+OFILE =		$(CFILE:%.c=%.o)
 
-all:
-	make -C libft/
-	$(CC) $(SOURCES) $(DISPLAY) $(LIBFT_H)
-	ar rc $(NAME) *.o libft/obj/*.o
-	ranlib $(NAME)
+OBJ =		$(addprefix $(OBJ_DIR), $(OFILE))
 
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+		@mkdir -p $(OBJ_DIR)
+		@echo Create: ft_printf Object directory
+
+$(NAME): $(OBJ)
+		@echo LIBFT START
+		@make -C $(LIB_DIR)
+		@echo Copying $(LIBFT_A) to root.
+		@cp $(LIB_DIR)$(LIBFT_A) .
+		@mv $(LIBFT_A) $(NAME)
+		@ar rc $(NAME) $(addprefix $(OBJ_DIR), $(OFILE))
+		@ranlib $(NAME)
+		@echo Merged: $(NAME) with $(LIBFT_A)
+		@echo FT_PRINTF COMPLETE
+
+$(OBJ): $(CFIND)
+		@$(MAKE) $(OFILE)
+
+$(OFILE):
+		@echo Create: $(@:obj/%=%)
+		@$(COMP) $(OBJ_DIR)$@ $(SRC_DIR)$(@:%.o=%.c)
 
 clean:
-	make -C libft/ clean
-	/bin/rm -rf *.o
-	/bin/rm -rf *.a
+		@/bin/rm -rf $(OBJ_DIR)
+		@make -C $(LIB_DIR) clean
+		@echo Cleaned ft_printf object files
 
 fclean: clean
-	make -C libft/ fclean
-	rm -rf a.out
+		@/bin/rm -f $(NAME)
+		@make -C $(LIB_DIR) fclean
+		@echo Cleaned $(NAME)
 
 re: fclean all
 
-#DO .PHONY
+.PHONY: all clean flcean re

@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 15:21:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 18:51:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ t_DATA			*display_ws(t_DATA *DATA)
 	if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	while (s[len])
-	{
-		ft_putwchar(s[len]);
-		DATA->len++;
-	}
+		display_wchar(s[len], DATA);
 	if (DATA->converter_flag[0] == '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	free (s);

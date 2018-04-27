@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   display_wchar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/27 00:15:16 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 11:12:12 by dhojt            ###   ########.fr       */
+/*   Created: 2018/04/27 18:40:25 by dhojt             #+#    #+#             */
+/*   Updated: 2018/04/27 18:40:36 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static void		oct_4(wint_t c)
 {
@@ -62,7 +62,7 @@ static void		oct_1(wint_t c)
 	write (1, &c, 1);
 }
 
-void			ft_putwchar(wint_t c)
+void			display_wchar(wint_t c)
 {
 	if (c <= 127)
 		oct_1(c);

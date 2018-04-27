@@ -6,14 +6,16 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:52:37 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:53:01 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 17:33:25 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <locale.h>
 
 int ft_printf(const char *format, ...)
 {
+	setlocale(LC_ALL, "");
     t_DATA *DATA;
     DATA = (t_DATA*)malloc(sizeof(t_DATA));
 

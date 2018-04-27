@@ -6,7 +6,7 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/27 15:07:40 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/27 18:42:16 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ CFILE =		ft_printf.c \
 			display_p.c \
 			display_ws.c \
 			display_gap.c \
+			display_wchar.c \
 			display_other.c
 
 CFIND =		$(CFILE:%=$(SRC_DIR)%)

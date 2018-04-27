@@ -6,7 +6,7 @@
 #    By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/27 15:32:02 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/27 02:02:01 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/27 18:32:52 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,8 +94,7 @@ CFILE =			ft_atoi.c \
 				ft_strtrimselect.c \
 				ft_strupcase.c \
 				ft_tolower.c \
-				ft_toupper.c \
-				ft_putwchar.c
+				ft_toupper.c
 
 OFILE =			$(CFILE:%.c=%.o)
 

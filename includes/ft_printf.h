@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:46:06 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 15:06:14 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 22:15:41 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_DATA				*display_o(t_DATA *DATA);
 t_DATA				*display_p(t_DATA *DATA);
 t_DATA				*display_ws(t_DATA *DATA);
 t_DATA				*display_other(t_DATA *DATA);
+void				display_wchar(wint_t c, t_DATA *DATA);
 void				display_gap(t_DATA *DATA, char c, int len, int update_len);
 
 #endif

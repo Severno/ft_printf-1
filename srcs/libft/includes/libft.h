@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 15:39:39 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 02:02:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 11:12:14 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <ctype.h>
 
 int				ft_isalnum(int c);
 void			ft_putchar(char c);
@@ -84,7 +85,7 @@ char			*ft_strsplitfirst(char *str, char c);
 void			ft_putnbrmax_fd(intmax_t n, int fd);
 void			ft_putnbrumax_fd(uintmax_t n, int fd);
 char			*ft_itoa_base(uintmax_t num, uintmax_t base, char c);
-void			ft_putwchar(unsigned long c);
+void			ft_putwchar(wint_t c);
 
 typedef struct	s_list
 {

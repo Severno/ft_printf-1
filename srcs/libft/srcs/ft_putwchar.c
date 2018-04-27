@@ -6,15 +6,15 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 00:15:16 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 08:56:47 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 11:12:12 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		oct_4(unsigned long c)
+static void		oct_4(wint_t c)
 {
-	unsigned char a1;
+	unsigned char a1; 
 	unsigned char a2;
 	unsigned char a3;
 	unsigned char a4;
@@ -30,7 +30,7 @@ static void		oct_4(unsigned long c)
 	write (1, &a4, 1);
 }
 
-static void		oct_3(unsigned long c)
+static void		oct_3(wint_t c)
 {
 	unsigned char a1;
 	unsigned char a2;
@@ -45,7 +45,7 @@ static void		oct_3(unsigned long c)
 	write (1, &a3, 1);
 }
 
-static void		oct_2(unsigned long c)
+static void		oct_2(wint_t c)
 {
 	unsigned char a1;
 	unsigned char a2;
@@ -57,12 +57,12 @@ static void		oct_2(unsigned long c)
 	write (1, &a2, 1);
 }
 
-static void		oct_1(unsigned long c)
+static void		oct_1(wint_t c)
 {
 	write (1, &c, 1);
 }
 
-void			ft_putwchar(unsigned long c)
+void			ft_putwchar(wint_t c)
 {
 	if (c <= 127)
 		oct_1(c);

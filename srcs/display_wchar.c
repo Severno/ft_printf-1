@@ -6,7 +6,11 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 18:40:25 by dhojt             #+#    #+#             */
+<<<<<<< HEAD:srcs/display_wchar.c
 /*   Updated: 2018/04/27 22:19:03 by dhojt            ###   ########.fr       */
+=======
+/*   Updated: 2018/04/27 18:40:36 by dhojt            ###   ########.fr       */
+>>>>>>> ae10ac9d6623310cceabae1c4f4315b44ad9cb79:srcs/display_wchar.c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +66,11 @@ static void		oct_1(wint_t c)
 	write (1, &c, 1);
 }
 
+<<<<<<< HEAD:srcs/display_wchar.c
 void			display_wchar(wint_t c, t_DATA *DATA)
+=======
+void			display_wchar(wint_t c)
+>>>>>>> ae10ac9d6623310cceabae1c4f4315b44ad9cb79:srcs/display_wchar.c
 {
 	if (c <= 127)
 	{

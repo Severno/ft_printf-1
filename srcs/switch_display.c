@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:06:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 15:07:03 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 14:46:02 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_DATA			*switch_display(t_DATA *DATA)
 		display_d(DATA);
 	else if(*flag == 'c' || *flag == 'C')
 		display_c(DATA);
-	else if(*flag == 's' && ft_strcmp(DATA->argument_flag, "ll") == 0)
+	else if(*flag == 's' && ft_strcmp(DATA->argument_flag, "l") == 0)
 		display_ws(DATA);
 	else if(*flag == 's')
 		display_s(DATA);

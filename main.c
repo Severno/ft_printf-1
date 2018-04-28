@@ -12,24 +12,22 @@ int		main(void)
 	setlocale(LC_ALL, "");
 		c = 0x1234;
 
-	val = ft_printf("%ls, %ls", L"ÊM-^ZM-^VÁM-^BM-^I", L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ≤ŸM-ÿ±");
+	val = ft_printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	printf("[%d]\n\n", val);
-	val =    printf("%ls, %ls", L"ÊM-^ZM-^VÁM-^BM-^I", L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ≤ŸM-ÿ±");
-	printf("[%d]\n\n", val);
-
-	printf("\n\n\n\n");
-
-	val = ft_printf("%ls", L"ÊM-^ZM-^VÁM-^BM-^I");
-	printf("[%d]\n\n", val);
-	val =    printf("%ls", L"ÊM-^ZM-^VÁM-^BM-^I");
-	printf("[%d]\n\n", val);
-
-	val = ft_printf("coco et %-#-#--24X titi%#012x", 12, -874);
-	printf("[%d]\n\n", val);
-	val =    printf("coco et %-#-#--24X titi%#012x", 12, -874);
+	val =    printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 	printf("[%d]\n\n", val);
 
 	printf("\n\n\n\n");
+
+
+	ft_printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+	printf("\n");
+	printf("{%30S}", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
+
+	
+
+
+
 
 
 	return (0);

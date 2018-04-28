@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_S.c                                        :+:      :+:    :+:   */
+/*   display_ws.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 03:48:00 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 12:11:26 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ t_DATA			*display_ws(t_DATA *DATA)
 		s = wstrndup(L"(null)", DATA->precision);
 	else if (DATA->precision == -1&& !s)
 		s = wstrdup(L"(null)");
+	while (s[len])
+		len++;
 	if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
-	while (s[len])
-		display_wchar(s[len++], DATA);
+	while (len--)
+		display_wchar(s[i++], DATA);
 	if (DATA->converter_flag[0] == '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	free (s);

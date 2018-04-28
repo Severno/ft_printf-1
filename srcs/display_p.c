@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/27 15:56:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 12:01:31 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static t_DATA		*print_u(t_DATA *DATA, char *str, int align_left)
 	if (!align_left)
 		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
 	write(1, "0x", 2);
+	display_gap(DATA, '0', (DATA->precision - num_width) + 2, 1);
 	ft_putstr(str);
 	if (align_left)
 		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);

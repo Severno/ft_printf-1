@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 04:12:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 17:33:46 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ t_DATA			*display_c(t_DATA *DATA)
 	else
 		c = (char)va_arg(DATA->args, int);
 	c = (wint_t)c;
-	if (DATA->converter_flag[0] != '-')
+	if (DATA->converter_flag[3] == '0' && DATA->converter_flag[0] != '-')
+		display_gap(DATA, '0', DATA->field_width - 1, 1);	
+	else if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - 1, 1);	
 	display_wchar(c, DATA);
 	if (DATA->converter_flag[0] == '-')

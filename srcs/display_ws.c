@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 17:00:01 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 17:27:38 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ t_DATA			*display_ws(t_DATA *DATA)
 		s = wstrdup(L"(null)");
 	while (s[i])
 		len += char_len(s[i++]);
-	if (DATA->converter_flag[0] != '-')
+	if (DATA->converter_flag[3] == '0' && DATA->converter_flag[0] != '-')
+		display_gap(DATA, '0', DATA->field_width - len, 1);
+	else if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	i = 0;
 	while (s[i])

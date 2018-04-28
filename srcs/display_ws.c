@@ -6,11 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/04/28 00:00:10 by dhojt            ###   ########.fr       */
-=======
-/*   Updated: 2018/04/27 18:51:52 by dhojt            ###   ########.fr       */
->>>>>>> ae10ac9d6623310cceabae1c4f4315b44ad9cb79
+/*   Updated: 2018/04/28 03:48:00 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +60,7 @@ t_DATA			*display_ws(t_DATA *DATA)
 	if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	while (s[len])
-<<<<<<< HEAD
 		display_wchar(s[len++], DATA);
-=======
-		display_wchar(s[len], DATA);
->>>>>>> ae10ac9d6623310cceabae1c4f4315b44ad9cb79
 	if (DATA->converter_flag[0] == '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	free (s);

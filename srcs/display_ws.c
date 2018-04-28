@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 17:27:38 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 18:01:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ static wchar_t	*wstrdup(wchar_t *str)
 t_DATA			*display_ws(t_DATA *DATA)
 {
 	wchar_t		*s;
-	size_t		i;
+	int			store;
+	int			i;
 	int			len;
 
 	i = 0;
 	len = 0;
+	store = 0;
 	s = (wchar_t *)va_arg(DATA->args, wchar_t *);
 	if (DATA->precision > -1 && s)
 		s = wstrndup(s, DATA->precision);
@@ -73,14 +75,23 @@ t_DATA			*display_ws(t_DATA *DATA)
 	else if (DATA->precision == -1&& !s)
 		s = wstrdup(L"(null)");
 	while (s[i])
+	{
+		if (DATA->precision > -1 && (store += char_len(s[i])) > DATA->precision)
+			break;
 		len += char_len(s[i++]);
+	}
 	if (DATA->converter_flag[3] == '0' && DATA->converter_flag[0] != '-')
 		display_gap(DATA, '0', DATA->field_width - len, 1);
 	else if (DATA->converter_flag[0] != '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	i = 0;
+	store = 0;
 	while (s[i])
+	{
+		if (DATA->precision > -1 && (store += char_len(s[i])) > DATA->precision)
+			break;
 		display_wchar(s[i++], DATA);
+	}
 	if (DATA->converter_flag[0] == '-')
 		display_gap(DATA, ' ', DATA->field_width - len, 1);
 	free (s);

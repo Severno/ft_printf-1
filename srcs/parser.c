@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:54:12 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 19:54:15 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 11:49:23 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int parser(t_DATA *DATA)
 {
-    while(DATA->f_copy[DATA->i] != '\0')
+    if (ft_strcmp(DATA->f_copy, "%") == 0)
+		return (0);
+	while(DATA->f_copy[DATA->i] != '\0')
     {
         if(DATA->f_copy[DATA->i]=='%')
         {

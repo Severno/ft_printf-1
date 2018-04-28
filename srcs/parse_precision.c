@@ -6,24 +6,24 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:45:26 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 20:57:05 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 00:16:10 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_DATA *parse_precision(t_DATA *DATA)
+t_tab	*parse_precision(t_tab *tab)
 {
-	while (DATA->f_treat[DATA->i] == '.')
+	while (tab->f_treat[tab->i] == '.')
 	{
-		DATA->i++;
-		DATA->precision = 0;
+		tab->i++;
+		tab->precision = 0;
 	}
-	while (DATA->f_treat[DATA->i] >= '0' && DATA->f_treat[DATA->i] <= '9')
+	while (tab->f_treat[tab->i] >= '0' && tab->f_treat[tab->i] <= '9')
 	{
-		DATA->precision *= 10;
-		DATA->precision += (DATA->f_treat[DATA->i] - 48);
-		DATA->i++;
+		tab->precision *= 10;
+		tab->precision += (tab->f_treat[tab->i] - 48);
+		tab->i++;
 	}
-	return (DATA);
+	return (tab);
 }

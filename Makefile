@@ -6,7 +6,7 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/27 18:42:16 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/29 01:02:24 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFILE =		ft_printf.c \
 			initialize.c \
 			reinitialize.c \
 			parser.c \
-			parse_converter_flags.c \
+			parse_convert.c \
 			parse_field_width.c \
 			parse_precision.c \
 			parse_arguments.c \

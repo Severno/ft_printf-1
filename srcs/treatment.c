@@ -6,23 +6,20 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:55:14 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 22:38:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 00:20:50 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int treatement(t_DATA *DATA)
+int		treatement(t_tab *tab)
 {
-    DATA->i++;
-
-    parse_converter(DATA);
-    parse_field_width(DATA);
-    parse_precision(DATA);
-    parse_arguments(DATA);
-    parse_specifier(DATA);
-
-    switch_display(DATA);
-
-    return (DATA->len);
+	tab->i++;
+	parse_convert(tab);
+	parse_field_width(tab);
+	parse_precision(tab);
+	parse_arguments(tab);
+	parse_specifier(tab);
+	switch_display(tab);
+	return (tab->len);
 }

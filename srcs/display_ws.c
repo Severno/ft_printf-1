@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 18:01:29 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 00:04:22 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int		char_len(wchar_t c)
 {
 	int len;
+
 	if (c <= 127)
 		len = 1;
 	else if (c >= 127 && c <= 2047)
@@ -26,7 +27,6 @@ static int		char_len(wchar_t c)
 		len = 4;
 	return (len);
 }
-
 
 static wchar_t	*wstrndup(wchar_t *s1, size_t n)
 {
@@ -55,7 +55,7 @@ static wchar_t	*wstrdup(wchar_t *str)
 	return (wstrndup(str, len));
 }
 
-t_DATA			*display_ws(t_DATA *DATA)
+t_tab			*display_ws(t_tab *tab)
 {
 	wchar_t		*s;
 	int			store;
@@ -65,35 +65,35 @@ t_DATA			*display_ws(t_DATA *DATA)
 	i = 0;
 	len = 0;
 	store = 0;
-	s = (wchar_t *)va_arg(DATA->args, wchar_t *);
-	if (DATA->precision > -1 && s)
-		s = wstrndup(s, DATA->precision);
-	else if (DATA->precision == -1 && s)
+	s = (wchar_t *)va_arg(tab->args, wchar_t *);
+	if (tab->precision > -1 && s)
+		s = wstrndup(s, tab->precision);
+	else if (tab->precision == -1 && s)
 		s = wstrdup(s);
-	else if (DATA->precision > -1 && !s)
-		s = wstrndup(L"(null)", DATA->precision);
-	else if (DATA->precision == -1&& !s)
+	else if (tab->precision > -1 && !s)
+		s = wstrndup(L"(null)", tab->precision);
+	else if (tab->precision == -1 && !s)
 		s = wstrdup(L"(null)");
 	while (s[i])
 	{
-		if (DATA->precision > -1 && (store += char_len(s[i])) > DATA->precision)
-			break;
+		if (tab->precision > -1 && (store += char_len(s[i])) > tab->precision)
+			break ;
 		len += char_len(s[i++]);
 	}
-	if (DATA->converter_flag[3] == '0' && DATA->converter_flag[0] != '-')
-		display_gap(DATA, '0', DATA->field_width - len, 1);
-	else if (DATA->converter_flag[0] != '-')
-		display_gap(DATA, ' ', DATA->field_width - len, 1);
+	if (tab->convert[3] == '0' && tab->convert[0] != '-')
+		display_gap(tab, '0', tab->field_width - len, 1);
+	else if (tab->convert[0] != '-')
+		display_gap(tab, ' ', tab->field_width - len, 1);
 	i = 0;
 	store = 0;
 	while (s[i])
 	{
-		if (DATA->precision > -1 && (store += char_len(s[i])) > DATA->precision)
-			break;
-		display_wchar(s[i++], DATA);
+		if (tab->precision > -1 && (store += char_len(s[i])) > tab->precision)
+			break ;
+		display_wchar(s[i++], tab);
 	}
-	if (DATA->converter_flag[0] == '-')
-		display_gap(DATA, ' ', DATA->field_width - len, 1);
-	free (s);
-	return (DATA);
+	if (tab->convert[0] == '-')
+		display_gap(tab, ' ', tab->field_width - len, 1);
+	free(s);
+	return (tab);
 }

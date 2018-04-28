@@ -6,23 +6,20 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:43:08 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/25 20:56:01 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 00:23:07 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_DATA *initialize(t_DATA *DATA)
+t_tab	*initialize(t_tab *tab)
 {
-	DATA->len = 0;
-	DATA->i = 0;
-
-	DATA->specifier_mask = "scSCdDiuUoOxXbp%";
-	DATA->converter_mask = "-+ 0#";
-	DATA->argument_mask = "lhjz";
-
-	DATA->f_treat = (char *)DATA->format;
-	DATA->f_copy = (char *)DATA->format;
-
-	return(DATA);
+	tab->len = 0;
+	tab->i = 0;
+	tab->specifier_mask = "scSCdDiuUoOxXbp%";
+	tab->converter_mask = "-+ 0#";
+	tab->argument_mask = "lhjz";
+	tab->f_treat = (char *)tab->format;
+	tab->f_copy = (char *)tab->format;
+	return (tab);
 }

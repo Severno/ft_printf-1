@@ -6,37 +6,37 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 17:31:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 23:56:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_DATA			*display_s(t_DATA *DATA)
+t_tab			*display_s(t_tab *tab)
 {
 	char		*s;
 	int			i;
 	int			len;
 
 	i = 0;
-	s = va_arg(DATA->args, char *);
-	if (DATA->precision > -1 && s)
-		s = ft_strndup(s, DATA->precision);
-	else if (DATA->precision == -1 && s)
+	s = va_arg(tab->args, char *);
+	if (tab->precision > -1 && s)
+		s = ft_strndup(s, tab->precision);
+	else if (tab->precision == -1 && s)
 		s = ft_strdup(s);
-	else if (DATA->precision > -1 && !s)
-		s = ft_strndup("(null)", DATA->precision);
-	else if (DATA->precision == -1&& !s)
+	else if (tab->precision > -1 && !s)
+		s = ft_strndup("(null)", tab->precision);
+	else if (tab->precision == -1 && !s)
 		s = ft_strdup("(null)");
 	len = ft_strlen(s);
-	DATA->len += len;
-	if (DATA->converter_flag[3] == '0' && DATA->converter_flag[0] != '-')
-		display_gap(DATA, '0', DATA->field_width - len, 1);
-	else if (DATA->converter_flag[0] != '-')
-		display_gap(DATA, ' ', DATA->field_width - len, 1);
+	tab->len += len;
+	if (tab->convert[3] == '0' && tab->convert[0] != '-')
+		display_gap(tab, '0', tab->field_width - len, 1);
+	else if (tab->convert[0] != '-')
+		display_gap(tab, ' ', tab->field_width - len, 1);
 	ft_putstr(s);
-	if (DATA->converter_flag[0] == '-')
-		display_gap(DATA, ' ', DATA->field_width - len, 1);
-	free (s);
-	return (DATA);
+	if (tab->convert[0] == '-')
+		display_gap(tab, ' ', tab->field_width - len, 1);
+	free(s);
+	return (tab);
 }

@@ -6,49 +6,49 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 16:01:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 20:54:45 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 23:55:26 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_DATA	*display_percent(t_DATA *DATA)
+static t_tab	*display_percent(t_tab *tab)
 {
-	if (DATA->converter_flag[3] == '0' && DATA->precision <= 0  && !DATA->converter_flag[0])
+	if (tab->convert[3] == '0' && tab->precision <= 0 && !tab->convert[0])
 	{
-		DATA->precision = DATA->field_width;
-		DATA->field_width = 0;
+		tab->precision = tab->field_width;
+		tab->field_width = 0;
 	}
-	if (DATA->converter_flag[0] != '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);
-	if (DATA->converter_flag[3] == '0')
-		display_gap(DATA, '0', DATA->precision - 1, 1);
+	if (tab->convert[0] != '-')
+		display_gap(tab, ' ', tab->field_width - 1, 1);
+	if (tab->convert[3] == '0')
+		display_gap(tab, '0', tab->precision - 1, 1);
 	write(1, "%", 1);
-	if (DATA->converter_flag[0] == '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);
-	DATA->len++;
-	return(DATA);
+	if (tab->convert[0] == '-')
+		display_gap(tab, ' ', tab->field_width - 1, 1);
+	tab->len++;
+	return (tab);
 }
 
-t_DATA			*display_other(t_DATA *DATA)
+t_tab			*display_other(t_tab *tab)
 {
-	if (DATA->f_treat[DATA->i] == '%')
+	if (tab->f_treat[tab->i] == '%')
 	{
-		display_percent(DATA);
-		return (DATA);
+		display_percent(tab);
+		return (tab);
 	}
-	if (DATA->converter_flag[3] == '0' && DATA->precision <= 0  && !DATA->converter_flag[0])
+	if (tab->convert[3] == '0' && tab->precision <= 0 && !tab->convert[0])
 	{
-		DATA->precision = DATA->field_width;
-		DATA->field_width = 0;
+		tab->precision = tab->field_width;
+		tab->field_width = 0;
 	}
-	if (DATA->converter_flag[0] != '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);
-	if (DATA->converter_flag[3] == '0')
-		display_gap(DATA, '0', DATA->precision - 1, 1);
-	write(1, &DATA->f_copy[DATA->i], 1);
-	if (DATA->converter_flag[0] == '-')
-		display_gap(DATA, ' ', DATA->field_width - 1, 1);
-	DATA->len++;
-	return(DATA);
+	if (tab->convert[0] != '-')
+		display_gap(tab, ' ', tab->field_width - 1, 1);
+	if (tab->convert[3] == '0')
+		display_gap(tab, '0', tab->precision - 1, 1);
+	write(1, &tab->f_copy[tab->i], 1);
+	if (tab->convert[0] == '-')
+		display_gap(tab, ' ', tab->field_width - 1, 1);
+	tab->len++;
+	return (tab);
 }

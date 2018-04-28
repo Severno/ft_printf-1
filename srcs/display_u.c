@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/26 14:56:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/27 15:43:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static uintmax_t	get_num(t_DATA *DATA)
 {
 	uintmax_t	num;
-	
+
 	if (DATA->specifier_flag == 'U')
 		num = (unsigned long)(va_arg(DATA->args, unsigned long int));
 	else if (ft_strcmp(DATA->argument_flag, "hh") == 0)
@@ -72,6 +72,11 @@ t_DATA			*display_u(t_DATA *DATA)
 
 	align_left = 0;
 	num = get_num(DATA);
+	if (num == 0 && DATA->precision == 0)
+	{
+		display_gap(DATA, ' ', DATA->field_width, 1);
+		return (DATA);
+	}
 	num_width = get_tens(num);
 	if (DATA->converter_flag[0] == '-')
 		align_left = 1;

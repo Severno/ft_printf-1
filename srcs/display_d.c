@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/26 14:55:20 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 01:53:44 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ static t_DATA		*print_d(t_DATA *DATA, intmax_t  num, int num_width, int align_le
 		not_blank = DATA->precision;
 	if (negatvity_placeholder)
 		not_blank++;
-	//if (negatvity_placeholder && DATA->converter_flag[3] == '0')
-	//	DATA->len--;
 	DATA->len += (not_blank <= DATA->field_width) ? DATA->field_width : not_blank;
 	if (!align_left)
 		display_gap(DATA, ' ', DATA->field_width - not_blank, 0);
@@ -110,6 +108,10 @@ t_DATA			*display_d(t_DATA *DATA)
 	num = get_num(DATA);
 	if (num == 0 && DATA->precision == 0)
 	{
+		if (DATA->converter_flag[1] == '+')
+			display_wchar('+', DATA);
+		if (DATA->converter_flag[2] == ' ')
+			display_wchar(' ', DATA);
 		display_gap(DATA, ' ', DATA->field_width, 1);
 		return (DATA);
 	}

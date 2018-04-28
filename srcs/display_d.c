@@ -6,7 +6,7 @@
 /*   By: dhojt <dhojt@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 23:44:21 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 23:50:31 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 01:21:27 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,8 @@ static t_tab	*do_d(t_tab *tab, intmax_t num, int num_width, int align_left)
 	char		negatvity_placeholder;
 	int			is_negative;
 
-	is_negative = 0;
-	if (num < 0)
-		is_negative = 1;
-	if (is_negative && num != (-9223372036854775807 - 1))
-		num *= -1;
+	is_negative = (num < 0) ? 1 : 0;
+	num *= (is_negative && num != (-9223372036854775807 - 1)) ? -1 : 1;
 	negatvity_placeholder = get_negatvity_placeholder(tab, is_negative);
 	not_blank = num_width;
 	if (num_width <= tab->precision && tab->precision >= 0)
@@ -87,11 +84,8 @@ static t_tab	*do_d(t_tab *tab, intmax_t num, int num_width, int align_left)
 	display_gap(tab, '0', tab->precision - num_width, 0);
 	if (num != (-9223372036854775807 - 1))
 		ft_putnbrmax_fd(num, 1);
-	else
-	{
+	else if ((tab->len += 18) > 0)
 		write(1, "9223372036854775808", 19);
-		tab->len += 18;
-	}
 	if (align_left)
 		display_gap(tab, ' ', tab->field_width - not_blank, 0);
 	return (tab);

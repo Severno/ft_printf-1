@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 12:01:31 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/28 17:17:27 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ t_DATA			*display_p(t_DATA *DATA)
 		align_left = 1;
 	if (DATA->precision == 0 && num == 0)
 		*str = '\0';
+	if (DATA->converter_flag[3] == '0' && DATA->precision == -1 && !DATA->converter_flag[0])
+	{
+		DATA->precision = DATA->field_width - 2;
+		DATA->field_width = 0;
+	}
 	print_u(DATA, str, align_left);
 	return (DATA);
 }

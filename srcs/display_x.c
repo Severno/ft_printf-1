@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 10:21:09 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 19:40:55 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ static t_tab		*do_x(t_tab *tab, uintmax_t num, char *str, int align_left)
 	int			n_b;
 	int			n_w;
 
-	n_w = ft_strlen(str);
-	if (tab->convert[4] == '#' && num)
+	if ((n_w = ft_strlen(str)) && tab->convert[4] == '#' && num &&
+			tab->convert[3] == '0' && tab->field_width)
+		n_w += 2;
+	else if ((n_w = ft_strlen(str)) && tab->convert[4] == '#' && num)
 	{
-		if (tab->convert[3] == '0')
-			tab->precision -= 2;
 		tab->field_width -= 2;
 		tab->len += 2;
 	}
@@ -66,11 +66,7 @@ static t_tab		*do_x(t_tab *tab, uintmax_t num, char *str, int align_left)
 		display_gap(tab, ' ', tab->field_width - n_b, 0);
 	print_leading_zero(num, tab->convert[4], tab->specifier_flag);
 	display_gap(tab, '0', tab->precision - n_w, 0);
-	if (tab->specifier_flag == 'x')
-		ft_putstr(str);
-	else if (tab->specifier_flag == 'X')
-		ft_putstr(ft_itoa_base(num, 16, 'A'));
-	free(str);
+	ft_putstr(str);
 	if (align_left)
 		display_gap(tab, ' ', tab->field_width - n_b, 0);
 	return (tab);
@@ -79,6 +75,7 @@ static t_tab		*do_x(t_tab *tab, uintmax_t num, char *str, int align_left)
 t_tab				*display_x(t_tab *tab)
 {
 	char		*str;
+	char		c;
 	uintmax_t	num;
 	int			align_left;
 
@@ -89,12 +86,16 @@ t_tab				*display_x(t_tab *tab)
 		display_gap(tab, ' ', tab->field_width, 1);
 		return (tab);
 	}
-	if (!(str = ft_itoa_base(num, 16, 'a')))
+	c = 'a';
+	if (tab->specifier_flag == 'X')
+		c = 'A';
+	if (!(str = ft_itoa_base(num, 16, c)))
 		return (NULL);
 	if (tab->convert[0] == '-')
 		align_left = 1;
 	if (tab->convert[3] == '0' && tab->precision == -1 && !tab->convert[0])
 		tab->precision = tab->field_width;
 	do_x(tab, num, str, align_left);
+	free(str);
 	return (tab);
 }

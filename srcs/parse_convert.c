@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:44:59 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 01:02:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 13:27:34 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,16 @@ t_tab		*parse_convert(t_tab *tab)
 	{
 		while (tab->converter_mask[i] == tab->f_treat[tab->i])
 		{
-			while (tab->f_treat[tab->i] == '-')
-			{
+			while (tab->f_treat[tab->i] == '-' && tab->i++)
 				tab->convert[0] = '-';
-				tab->i++;
-			}
-			while (tab->f_treat[tab->i] == '+')
-			{
+			while (tab->f_treat[tab->i] == '+' && tab->i++)
 				tab->convert[1] = '+';
-				tab->i++;
-			}
-			while (tab->f_treat[tab->i] == ' ')
-			{
+			while (tab->f_treat[tab->i] == ' ' && tab->i++)
 				tab->convert[2] = ' ';
-				tab->i++;
-			}
-			while (tab->f_treat[tab->i] == '0')
-			{
+			while (tab->f_treat[tab->i] == '0' && tab->i++)
 				tab->convert[3] = '0';
-				tab->i++;
-			}
-			while (tab->f_treat[tab->i] == '#')
-			{
+			while (tab->f_treat[tab->i] == '#' && tab->i++)
 				tab->convert[4] = '#';
-				tab->i++;
-			}
 			i = 0;
 		}
 		i++;

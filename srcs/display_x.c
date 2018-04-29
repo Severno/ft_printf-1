@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 19:40:55 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 20:53:13 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ t_tab				*display_x(t_tab *tab)
 	if (tab->specifier_flag == 'X')
 		c = 'A';
 	if (!(str = ft_itoa_base(num, 16, c)))
-		return (NULL);
+		exit(-1);
 	if (tab->convert[0] == '-')
 		align_left = 1;
 	if (tab->convert[3] == '0' && tab->precision == -1 && !tab->convert[0])

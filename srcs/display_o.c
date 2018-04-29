@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:30:20 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 10:03:52 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 20:51:22 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_tab				*display_o(t_tab *tab)
 		return (tab);
 	}
 	if (!(str = ft_itoa_base(num, 8, 'a')))
-		return (NULL);
+		exit(-1);
 	if (tab->convert[0] == '-')
 		left = 1;
 	if (tab->convert[3] == '0' && tab->precision == -1 && !tab->convert[0])

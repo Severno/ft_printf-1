@@ -6,7 +6,7 @@
 #    By: dhojt <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/25 19:05:31 by dhojt             #+#    #+#              #
-#    Updated: 2018/04/29 20:08:08 by dhojt            ###   ########.fr        #
+#    Updated: 2018/04/29 21:03:45 by dhojt            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,11 +80,10 @@ $(OFILE):
 
 clean:
 		@/bin/rm -rf *.o
-		@make -C $(LIB_DIR) clean
+		@make -C $(LIB_DIR) fclean
 
 fclean: clean
 		@/bin/rm -f $(NAME)
-		@make -C $(LIB_DIR) fclean
 
 re: fclean all
 

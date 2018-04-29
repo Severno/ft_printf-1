@@ -6,7 +6,7 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 18:40:25 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 10:06:12 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 13:33:31 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,32 @@
 
 static void		oct_4(wint_t c)
 {
-	unsigned char a1;
-	unsigned char a2;
-	unsigned char a3;
-	unsigned char a4;
+	unsigned char put[4];
 
-	a1 = (c >> 18) + 240;
-	a2 = ((c >> 12) & 63) + 128;
-	a3 = ((c >> 6) & 63) + 128;
-	a4 = ((c & 63) + 128);
-	write(1, &a1, 1);
-	write(1, &a2, 1);
-	write(1, &a3, 1);
-	write(1, &a4, 1);
+	put[0] = (c >> 18) + 240;
+	put[1] = ((c >> 12) & 63) + 128;
+	put[2] = ((c >> 6) & 63) + 128;
+	put[3] = ((c & 63) + 128);
+	write(1, put, 4);
 }
 
 static void		oct_3(wint_t c)
 {
-	unsigned char a1;
-	unsigned char a2;
-	unsigned char a3;
+	unsigned char put[3];
 
-	a1 = (c >> 12) + 224;
-	a2 = ((c >> 6) & 63) + 128;
-	a3 = ((c & 63) + 128);
-	write(1, &a1, 1);
-	write(1, &a2, 1);
-	write(1, &a3, 1);
+	put[0] = (c >> 12) + 224;
+	put[1] = ((c >> 6) & 63) + 128;
+	put[2] = ((c & 63) + 128);
+	write(1, put, 3);
 }
 
 static void		oct_2(wint_t c)
 {
-	unsigned char a1;
-	unsigned char a2;
+	unsigned char put[2];
 
-	a1 = (c >> 6) + 192;
-	a2 = ((c & 63) + 128);
-	write(1, &a1, 1);
-	write(1, &a2, 1);
+	put[0] = (c >> 6) + 192;
+	put[1] = ((c & 63) + 128);
+	write(1, put, 2);
 }
 
 static void		oct_1(wint_t c)

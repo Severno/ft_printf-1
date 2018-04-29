@@ -6,11 +6,12 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 15:06:57 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:19:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 09:56:08 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 t_tab		*switch_display(t_tab *tab)
 {

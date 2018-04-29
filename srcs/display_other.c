@@ -6,11 +6,12 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 16:01:33 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 23:55:26 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:06:30 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 static t_tab	*display_percent(t_tab *tab)
 {

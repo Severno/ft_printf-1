@@ -6,17 +6,15 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:46:06 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 01:03:08 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 09:52:18 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <stdarg.h>
-# include "libft.h"
+# include <ctype.h>
 
 /*
 ** format: string (first ft_printf parameter).

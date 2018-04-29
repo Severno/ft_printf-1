@@ -6,11 +6,12 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 02:46:02 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 01:03:38 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:00:19 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 #include <ctype.h>
 
 t_tab			*display_c(t_tab *tab)

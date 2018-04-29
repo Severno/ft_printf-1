@@ -6,11 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/21 22:30:17 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:07:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:21:09 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <limits.h>
 
 static void			print_leading_zero(uintmax_t num, char hash, char x)
 {
@@ -47,10 +49,10 @@ static uintmax_t	get_num(t_tab *tab)
 
 static t_tab		*do_x(t_tab *tab, uintmax_t num, char *str, int align_left)
 {
-	int			not_blank;
-	int			num_width;
+	int			n_b;
+	int			n_w;
 
-	num_width = ft_strlen(str);
+	n_w = ft_strlen(str);
 	if (tab->convert[4] == '#' && num)
 	{
 		if (tab->convert[3] == '0')
@@ -58,21 +60,19 @@ static t_tab		*do_x(t_tab *tab, uintmax_t num, char *str, int align_left)
 		tab->field_width -= 2;
 		tab->len += 2;
 	}
-	not_blank = num_width;
-	if (num_width <= tab->precision && tab->precision > 0)
-		not_blank = tab->precision;
-	tab->len += (not_blank <= tab->field_width) ? tab->field_width : not_blank;
+	n_b = (n_w <= tab->precision && tab->precision > 0) ? tab->precision : n_w;
+	tab->len += (n_b <= tab->field_width) ? tab->field_width : n_b;
 	if (!align_left)
-		display_gap(tab, ' ', tab->field_width - not_blank, 0);
+		display_gap(tab, ' ', tab->field_width - n_b, 0);
 	print_leading_zero(num, tab->convert[4], tab->specifier_flag);
-	display_gap(tab, '0', tab->precision - num_width, 0);
+	display_gap(tab, '0', tab->precision - n_w, 0);
 	if (tab->specifier_flag == 'x')
 		ft_putstr(str);
 	else if (tab->specifier_flag == 'X')
 		ft_putstr(ft_itoa_base(num, 16, 'A'));
 	free(str);
 	if (align_left)
-		display_gap(tab, ' ', tab->field_width - not_blank, 0);
+		display_gap(tab, ' ', tab->field_width - n_b, 0);
 	return (tab);
 }
 

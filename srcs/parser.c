@@ -6,11 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:54:12 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:17:48 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 09:55:46 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <unistd.h>
 
 int	parser(t_tab *tab)
 {

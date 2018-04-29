@@ -6,12 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 03:25:05 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:04:22 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:05:03 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <ctype.h>
+#include <stdlib.h>
 
 static int		char_len(wchar_t c)
 {

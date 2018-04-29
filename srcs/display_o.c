@@ -6,11 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:30:20 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 23:54:13 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:03:52 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <limits.h>
 
 static void			print_leading_zero(uintmax_t num, char hash)
 {

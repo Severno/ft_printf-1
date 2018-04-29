@@ -3,3 +3,6 @@ Ensure files names are ft_
 Change all headers
 Sort capital letter conversions.
 Do 'c' and 's' file types & switch.
+Protect Malloc
+free
+norm

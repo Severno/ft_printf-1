@@ -6,10 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:55:14 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:20:50 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 03:12:48 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctype.h>
+#include <stdarg.h>
+#include <unistd.h>
 #include "ft_printf.h"
 
 int		treatement(t_tab *tab)

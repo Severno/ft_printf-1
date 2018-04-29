@@ -6,11 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 00:41:03 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/28 23:59:23 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:02:26 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <limits.h>
 
 static uintmax_t	get_num(t_tab *tab)
 {

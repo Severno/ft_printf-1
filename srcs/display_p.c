@@ -6,11 +6,13 @@
 /*   By: dhojt <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 01:57:01 by dhojt             #+#    #+#             */
-/*   Updated: 2018/04/29 00:21:48 by dhojt            ###   ########.fr       */
+/*   Updated: 2018/04/29 10:04:29 by dhojt            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
+#include <limits.h>
 
 static uintmax_t	get_num(t_tab *tab)
 {
@@ -36,6 +38,7 @@ static t_tab		*print_u(t_tab *tab, char *str, int align_left)
 	ft_putstr(str);
 	if (align_left)
 		display_gap(tab, ' ', tab->field_width - not_blank, 0);
+	free(str);
 	return (tab);
 }
 

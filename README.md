@@ -48,7 +48,7 @@ int				main(void)
 	return (0);
 }
 ```
-To compile, run:
+Then compile with a program:
 ```console
 gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 ```

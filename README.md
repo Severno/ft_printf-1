@@ -38,18 +38,17 @@ The function cannot leak. All errors must be handled carefully. In no way can th
 Allowed functions are `write`, `getloacale`, `malloc`, `free`, `exit` and the three functions of `stdarg`. Everything else is forbidden.
 
 ### Using the project
-The project must be submitted without a Makefile. To compile first run:
-```console
-make -C libft/ fclean && make -C libft/
-```
-Then run:
-```console
-clang -Wall -Wextra -Werror -I libft/includes -o get_next_line.o -c get_next_line.c
-clang -Wall -Wextra -Werror -I libft/includes -o main.o -c main.c
-clang -o test_gnl main.o get_next_line.o -I libft/includes -L libft/ -lft
-```
+To compile, run `make`. This will compile **libftprintf.a**. To use, include `ft_printf.h` (located inside includes directory) and use just like `printf`:
+```c
+#include "ft_printf.h"
 
-This will compile **test_gnl**. Execute with a fillit map as a parameter.
+int				main(void)
+{
+	ft_printf("%s, %s!\n", "Hello", "world");
+	return (0);
+}
+```
+To compile, run:
 ```console
-./test_gnl [input_file]
+gcc -Wall -Werror -Wextra main.c libftprintf.a -I includes
 ```

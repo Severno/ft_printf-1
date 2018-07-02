@@ -36,7 +36,7 @@ ft_printf must achieve the following mandatory requirements:
 The function must conform to 42's norm.  
 The function cannot leak. All errors must be handled carefully. In no way can the function quit in an unexpected manner (Segmentation fault, bus error, double free, etc).  
 Allowed functions are `write`, `getloacale`, `malloc`, `free`, `exit` and the three functions of `stdarg`. Everything else is forbidden.
-
+***
 ### Using the project
 To compile, run `make`. This will compile **libftprintf.a**. To use, include `ft_printf.h` (located inside includes directory) and use just like `printf`:
 ```c

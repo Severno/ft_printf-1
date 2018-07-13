@@ -6,11 +6,11 @@
 01/25
 ***
 ### Challenge
-**Note** *This project is no longer updated. ft_printf is now part of [libft](https://github.com/davhojt/libft "libft, a 42 project"), my personal C library. See [ft_printf](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") inside libft. In the [libft version](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") you can just use the function by including libft.a and ft_printf.a, and is now 33% fater than this version*  
+**Note** *This project is no longer updated. ft_printf is now part of [libft](https://github.com/davhojt/libft "libft, a 42 project"), my personal C library. See [ft_printf](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") inside libft. In the [libft version](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") you can just use the function by including libft.a and ft_printf.a, and is now 33% faster than this version*  
   
 To recode libc's `printf`.  
   
-At 42, students are not allowed to use library functions. We can only submit wholly recreated programs and functions.
+At 42, students are not allowed to use library functions. We can only submit wholly self-written functions (no `strlen`, `strdup`, `bzero` etc.).
 ft_printf must be formatted in the same manor as libc's `printf`. For example:
 ```c
 ft_printf("%s is a %d student\n", "Dav", 42);
@@ -22,7 +22,7 @@ Dav is a 42 student
 Dav is a 42 student
 ```
   
-The project is complicated as there is an indefinate nnumber of parameters passed to the function. We use variadic arguments in this case.  
+The project is complicated as the number of parameters is indefinite. We use variadic arguments in this case.  
   
 ft_printf must achieve the following mandatory requirements:  
   

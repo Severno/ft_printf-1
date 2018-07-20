@@ -6,7 +6,7 @@
 01/25
 ***
 ### Challenge
-**Note** *This project is no longer updated. ft_printf is now part of [libft](https://github.com/davhojt/libft "libft, a 42 project"), my personal C library. See [ft_printf](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") inside libft. In the [libft version](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") you can just use the function by including libft.a and ft_printf.a,* ***and is now 33% faster than this version***  
+**Note** *This project is no longer updated. ft_printf is now part of [libft](https://github.com/davhojt/libft "libft, a 42 project"), my personal C library. See [ft_printf](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") inside libft. In the [libft version](https://github.com/davhojt/libft/tree/master/srcs/ft_printf "ft_printf, inside libft") you can just use the function by including libft.a and ft_printf.a,* ***and is now 33% faster than this version***.  
   
 To recode libc's `printf`.  
   
